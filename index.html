@@ -16,7 +16,25 @@
     <script src="https://kit.fontawesome.com/d3f8a28656.js" crossorigin="anonymous"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 </head>
-<body style="font-family:'Noto Sans'">
+
+<!-- <script>
+    console.log("Current devicePixelRatio:", document.documentElement.clientWidth);
+</script> -->
+<style>
+@media (min-width: 768px) and (max-width: 1800px) {
+    .column.is-8-desktop {
+        width: calc(66.6666666667% - var(--bulma-column-gap) / 2)
+    }
+}
+
+@media (min-width: 1800px) {
+    .column.is-8-desktop {
+        width: calc(55% - var(--bulma-column-gap) / 2);
+    }
+}
+</style>
+
+<body style="font-family:'Noto Sans'" class="has-text-justified">
     <div class="columns mt-0 ml-0 mr-0 mb-0">
         <div class="column is-1-desktop"></div>
         <div class="column is-2-desktop is-12-mobile">
@@ -107,7 +125,7 @@
             <div class="box mb-3 is-shadowless">
                 <h2 class="title is-3 mb-2">Research</h2>
                 <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3">
+                    <div class="column is-3" style="margin-top: 5px;">
                         <figure class="image is-16by9"><img src="./images/2025_ARTalk.jpg" alt="a paper"/></figure>
                     </div>
                     <div class="column is-9">
@@ -137,7 +155,37 @@
                     </div>
                 </div>
                 <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3">
+                    <div class="column is-3" style="margin-top: 5px;">
+                        <figure class="image is-16by9"><img src="./images/2025_LuminanceGS.jpg" alt="a paper"/></figure>
+                    </div>
+                    <div class="column is-9">
+                        <div class="box p-0 is-shadowless">
+                            <p style="font-size: 18px;">
+                                <b>Luminance-GS: Adapting 3D Gaussian Splatting to Challenging Lighting Conditions with View-Adaptive Curve Adjustment</b>
+                            </p>
+                            <p class="pb-2" style="font-size: 13px">
+                                Ziteng Cui, <b>Xuangeng Chu</b>, Tatsuya Harada
+                            </p>
+                            </p>
+                            <p style="font-size: 14px">
+                                <b>CVPR 2025</b>
+                            </p>
+                            <p style="font-size: 14px">
+                                <!-- <a href="https://arxiv.org/abs/2502.20323">Paper</a> / 
+                                <a href="https://xg-chu.site/project_artalk">Project Weibsite</a> / 
+                                <a href="https://github.com/xg-chu/GAGAvatar">Code</a> 
+                                <img style="vertical-align: top" src="https://img.shields.io/github/stars/xg-chu/GAGAvatar"> / 
+                                <a href="https://github.com/xg-chu/GAGAvatar_track">Data</a>
+                                <img style="vertical-align: top" src="https://img.shields.io/github/stars/xg-chu/GAGAvatar_track"> -->
+                            </p>
+                            <p style="font-size: 14px">
+                                A simple multi-view curve adjustment method for novel view synthesis under challenging lighting conditions, including low-light, overexposure, and varying exposure.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns" style="padding-bottom: 18px;">
+                    <div class="column is-3" style="margin-top: 5px;">
                         <figure class="image is-16by9"><img src="./images/2024_GAGA.jpg" alt="a paper"/></figure>
                     </div>
                     <div class="column is-9">
@@ -167,7 +215,7 @@
                     </div>
                 </div>
                 <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3">
+                    <div class="column is-3" style="margin-top: 5px;">
                         <figure class="image is-16by9"><img src="./images/2024_GPAvatar.gif" alt="a paper"/></figure>
                     </div>
                     <div class="column is-9">
@@ -197,7 +245,7 @@
                     </div>
                 </div>
                 <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3">
+                    <div class="column is-3" style="margin-top: 5px;">
                         <figure class="image is-16by9"><img src="./images/2024_NovelView.jpg" alt="a paper"/></figure>
                     </div>
                     <div class="column is-9">
@@ -222,7 +270,7 @@
                     </div>
                 </div>
                 <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3">
+                    <div class="column is-3" style="margin-top: 5px;">
                         <figure class="image is-16by9"><img src="./images/2023_TokenFace.jpg" alt="a paper"/></figure>
                     </div>
                     <div class="column is-9">
@@ -247,7 +295,7 @@
                     </div>
                 </div>
                 <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3">
+                    <div class="column is-3" style="margin-top: 5px;">
                         <figure class="image is-16by9"><img src="./images/2020_CrowdDet.jpg" alt="a paper"/></figure>
                     </div>
                     <div class="column is-9">
