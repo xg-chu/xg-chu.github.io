@@ -278,13 +278,13 @@ a:hover {
 }
 
 .news-scroll {
-    max-height: 95px;
+    max-height: 120px;
     overflow-y: auto;
     scrollbar-gutter: stable;
 }
 
 .work-scroll {
-    max-height: 95px;
+    max-height: 120px;
     overflow-y: auto;
     scrollbar-gutter: stable;
 }
