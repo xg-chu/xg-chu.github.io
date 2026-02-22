@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Sans+Mono|Albert+Sans" rel="stylesheet">
 
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon" sizes="192x192"/>
-    <link rel="stylesheet" href="./css/bulma.min.css">
     <link rel="stylesheet" href="./css/stylesheet.css">
     <script src="https://kit.fontawesome.com/d3f8a28656.js" crossorigin="anonymous"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
@@ -20,383 +19,453 @@
 <!-- <script>
     console.log("Current devicePixelRatio:", document.documentElement.clientWidth);
 </script> -->
-<style>
-@media (min-width: 768px) and (max-width: 1800px) {
-    .column.is-8-desktop {
-        width: calc(66.6666666667% - var(--bulma-column-gap) / 2)
-    }
-}
-
-@media (min-width: 1800px) {
-    .column.is-8-desktop {
-        width: calc(50% - var(--bulma-column-gap) / 2);
-    }
-    .column.is-1-desktop {
-        width: calc(10% - var(--bulma-column-gap) / 2);
-    }
-}
-</style>
-
-<body style="font-family:'Noto Sans'" class="has-text-justified">
-    <div class="columns mt-0 ml-0 mr-0 mb-0">
-        <div class="column is-1-desktop"></div>
-        <div class="column is-2-desktop is-12-mobile">
-            <div class="grid ml-5 mt-5">
-                <div class="cell m-0 p-0">
-                    <figure class="image is-1by1"><img style="scale: 100%;" src="./images/Portrait.jpg" alt="a portrait photo"/></figure>
+<body>
+    <div class="layout-shell site-shell">
+        <div class="layout-spacer"></div>
+        <aside class="sidebar-col">
+            <div class="profile-card profile-layout">
+                <div class="profile-photo">
+                    <figure class="image is-1by1 avatar-wrap"><img class="avatar-image" src="./images/Portrait2.jpg" alt="a portrait photo"/></figure>
                 </div>
-                <div class="cell m-0 pl-1 pb-1 pt-0 pr-0 has-text-left" style="font-family:'Futura'">
-                    <h2 class="title is-5 mb-3" >Xuangeng Chu</h2>
-                    <h3 class="subtitle is-6 mb-2">3rd year Ph.D. student</h3>
-                    <h3 class="subtitle is-6 mb-2">The University of Tokyo</h3>
-                    <h3 class="subtitle is-6 mb-2"><i class="fa-solid fa-location-dot fa-fw"></i>&nbspSetagaya, Tokyo</h3>  
-                    <h3 class="subtitle is-6 mb-2"><i class="fa-solid fa-envelope fa-fw"></i>&nbsp<a href="mailto:xuangeng.chu@mi.t.u-tokyo.ac.jp">Email</a></h3>
-                    <h3 class="subtitle is-6 mb-2"><i class="fa-brands fa-github fa-fw"></i>&nbsp<a href="https://github.com/xg-chu">GitHub</a></h3>
-                    <h3 class="subtitle is-6 mb-2"><i class="fa-brands fa-linkedin fa-fw"></i>&nbsp<a href="https://www.linkedin.com/in/xg-chu/">LinkedIn</a></h3>
-                    <h3 class="subtitle is-6 mb-2"><i class="fa-brands fa-google-scholar fa-fw"></i>&nbsp<a href="https://scholar.google.com/citations?user=yr4kSUsAAAAJ&hl=en">Google Scholar</a></h3>
+                <div class="profile-info">
+                    <h2 class="profile-name">Xuangeng Chu</h2>
+                    <p class="profile-meta">3rd year Ph.D. student</p>
+                    <p class="profile-meta">The University of Tokyo</p>
+                    <p class="profile-meta"><i class="fa-solid fa-location-dot fa-fw"></i>&nbspSetagaya, Tokyo</p>
+                    <p class="profile-meta"><i class="fa-solid fa-envelope fa-fw"></i>&nbsp<a href="mailto:xuangeng.chu@mi.t.u-tokyo.ac.jp">Email</a></p>
+                    <p class="profile-meta"><i class="fa-brands fa-github fa-fw"></i>&nbsp<a href="https://github.com/xg-chu">GitHub</a></p>
+                    <p class="profile-meta"><i class="fa-brands fa-linkedin fa-fw"></i>&nbsp<a href="https://www.linkedin.com/in/xg-chu/">LinkedIn</a></p>
+                    <p class="profile-meta"><i class="fa-brands fa-google-scholar fa-fw"></i>&nbsp<a href="https://scholar.google.com/citations?user=yr4kSUsAAAAJ&hl=en">Google Scholar</a></p>
                 </div>
-                <!-- <div class="cell mb-0 is-hidden-mobile hidden"> -->
-                <div class="cell mb-0 is-hidden-mobile is-hidden-desktop">
-                    <div class="box is-shadowless">
-                        <!-- <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=bg1866KpiI_I_grGQp-aCtrq1PrgNSRLXcdNOCCkFL8"></script> -->
+                <div class="profile-map">
+                    <div class="map-shell">
                         <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=wZtdDuhRvTFcUBNGn3wEhvkHUASjvyJr4XBBfbRyl8s"></script>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="column is-8-desktop is-12-mobile">
-            <div class="box mb-3 is-shadowless" style="text-align: justify">
-                <h2 class="title is-3 mb-2">About me</h2>
-                <p>
+        </aside>
+        <main class="main-col">
+            <section class="section-card section-block" id="about">
+                <h2 class="section-title">About me</h2>
+                <p class="section-copy">
                     I am currently a 3rd-year Ph.D. student at <a href="https://www.rcast.u-tokyo.ac.jp/en/">RCAST</a>, <a href="https://www.u-tokyo.ac.jp/en/index.html">the University of Tokyo</a>, advised by <a href="https://www.mi.t.u-tokyo.ac.jp/harada/">Prof. Tatsuya Harada</a>.
                     Prior to that, I received my M.Eng. from <a href="https://english.pku.edu.cn">Peking University</a>, where I was advised by <a href="http://faculty.pku.edu.cn/wangyasha/en/index.htm">Prof. Yasha Wang</a>, and I completed my B.Eng. at <a href="https://de.tongji.edu.cn">Tongji University</a>.
                     For my full CV, please see <a href="./CV.pdf">here</a>.
-                </p>
-            </div>
-            <div class="box mb-3 is-shadowless" style="text-align: justify">
-                <h2 class="title is-3 mb-2">Research Interests</h2>
-                <p>
-                    My research interests focus on 3D computer vision of humans, specifically in pose estimation and human reconstruction / generation.
-                    Additionally, I have experience with other computer vision applications such as object detection, multimodal understanding, and the reconstruction of objects and scenes.
+                    <br>
+                    My research interests focus on 3D human-centric computer vision, specifically in human reconstruction and animation.
+                    <!-- Additionally, I have experience with other computer vision applications such as object detection, multimodal understanding, and the reconstruction of objects and scenes. -->
                     My research goals are to enable everyone to easily create digital avatars for games and virtual worlds, and to improve machine understanding of humans.
                 </p>
-            </div>
-            <!-- <div class="box mb-3 is-shadowless">
-                <h2 class="title is-3 mb-2">News</h2>
-                <p class="mb-1"></p>
-                    ✨&nbsp <b>[2024.09]</b>&nbsp One paper is accepted to NeurIPS 2024!
-                </p>
-                <p class="mb-1">
-                    ✨&nbsp <b>[2024.07]</b>&nbsp I will be a visiting student researcher at <a href="https://pvl.cs.princeton.edu">Princeton Vision & Learning Lab</a> and advised by <a href="https://www.cs.princeton.edu/~jiadeng/">Prof. Jia Deng</a>!
-                </p>
-                <p class="mb-1">
-                    ✨&nbsp <b>[2024.01]</b>&nbsp One paper is accepted to ICLR 2024!
-                </p>
-                <p class="mb-1">
-                    📜&nbsp <b>[2023.04]</b>&nbsp Start PhD studies at the University of Tokyo, thanks to Prof. Tatsuya Harada!
-                </p>
-                <p class="mb-1">
-                    📜&nbsp <b>[2023.04]</b>&nbsp One paper is accepted to ICCV 2023!
-                </p>
-            </div> -->
-            <div class="box mb-0 is-shadowless">
-                <h2 class="title is-3 mb-2">Work and Internship Experience</h2>
-                    <p>
-                        [2025.08 - Now]&nbsp
-                        Research Scientist Intern at <a href="https://tech.facebook.com/reality-labs/">Meta Reality Labs</a> Pittsburgh.
+            </section>
+            <section class="section-card section-block" id="news">
+                <h2 class="section-title">News</h2>
+                <div class="news-scroll">
+                    <p class="news-entry">
+                        <span class="news-date">✨ [2026.02]</span>
+                        <span class="news-body">Two papers accepted to CVPR 2026!</span>
+                    </p>
+                    <p class="news-entry">
+                        <span class="news-date">📜 [2025.08]</span>
+                        <span class="news-body">Starting my internship at Meta Reality Labs Pittsburgh!</span>
+                    </p>
+                    <p class="news-entry">
+                        <span class="news-date">📜 [2025.08]</span>
+                        <span class="news-body">Two papers accepted to NeurIPS 2025!</span>
+                    </p>
+                    <p class="news-entry">
+                        <span class="news-date">📜 [2025.08]</span>
+                        <span class="news-body">One paper accepted to SIGGRAPH Asia 2025!</span>
+                    </p>
+                    <p class="news-entry">
+                        <span class="news-date">📜 [2025.01]</span>
+                        <span class="news-body">One paper accepted to CVPR 2025!</span>
+                    </p>
+                    <p class="news-entry">
+                        <span class="news-date">📜 [2024.09]</span>
+                        <span class="news-body">One paper accepted to NeurIPS 2024!</span>
+                    </p>
+                    <p class="news-entry">
+                        <span class="news-date">📜 [2024.07]</span>
+                        <span class="news-body">Starting my visiting studies at Princeton University!</span>
+                    </p>
+                    <p class="news-entry">
+                        <span class="news-date">📜 [2024.01]</span>
+                        <span class="news-body">One paper accepted to ICLR 2024!</span>
+                    </p>
+                    <p class="news-entry">
+                        <span class="news-date">📜 [2023.04]</span>
+                        <span class="news-body">Starting my PhD studies at the University of Tokyo!</span>
+                    </p>
+                    <p class="news-entry">
+                        <span class="news-date">📜 [2023.04]</span>
+                        <span class="news-body">One paper accepted to ICCV 2023!</span>
+                    </p>
+                </div>
+            </section>
+            <section class="section-card section-block">
+                <h2 class="section-title">Work and Internship Experience</h2>
+                <div class="work-scroll">
+                    <p class="timeline-entry">
+                        <span class="timeline-date">[2025.08 - 2026.01]</span>
+                        <span class="timeline-body">
+                            Research Scientist Intern at <a href="https://tech.facebook.com/reality-labs/">Meta Reality Labs</a> Pittsburgh.
+                        </span>
                         <!-- supervised by <a href="https://scholar.google.com/citations?user=sFQD3k4AAAAJ&hl=zh-TW">Shih-En Wei</a>. -->
                     </p>
-                    <p>
-                        [2025.05 - 2025.10]&nbsp
-                        Student Researcher at <a href="https://research.snap.com/team/computational-imaging.html">Snap Research</a> NYC.
+                    <p class="timeline-entry">
+                        <span class="timeline-date">[2025.05 - 2025.10]</span>
+                        <span class="timeline-body">
+                            Student Researcher at <a href="https://research.snap.com/team/computational-imaging.html">Snap Research</a> NYC (remote).
+                        </span>
                         <!-- supervised by <a href="https://www.cs.princeton.edu/~jiadeng/">Dr. Bing Zhou</a>. -->
                     </p>
-                    <p>
-                        [2024.07 - 2024.09]&nbsp
-                        Visiting Student Researcher at <a href="https://www.cs.princeton.edu">Princeton University</a>, supervised by <a href="https://www.cs.princeton.edu/~jiadeng/">Prof. Jia Deng</a>.
+                    <p class="timeline-entry">
+                        <span class="timeline-date">[2024.07 - 2024.09]</span>
+                        <span class="timeline-body">
+                            Visiting Student Researcher at <a href="https://www.cs.princeton.edu">Princeton University</a>, supervised by <a href="https://www.cs.princeton.edu/~jiadeng/">Prof. Jia Deng</a>.
+                        </span>
                     </p>
-                    <p>
-                        [2022.12 - 2023.11]&nbsp
-                        Research Intern at <a href="https://www.idea.edu.cn">International Digital Economy Academy</a>.
+                    <p class="timeline-entry">
+                        <span class="timeline-date">[2022.12 - 2023.11]</span>
+                        <span class="timeline-body">
+                            Research Intern at <a href="https://www.idea.edu.cn">International Digital Economy Academy</a> (IDEA).
+                        </span>
                         <!-- supervised by <a href="https://yu-li.github.io">Dr. Yu Li</a>. -->
                     </p>
-                    <p>
-                        [2021.03 - 2022.10]&nbsp
-                        Research Engineer at <a href="https://arc.tencent.com/en/index">Tencent ARC Lab</a>.
+                    <p class="timeline-entry">
+                        <span class="timeline-date">[2021.03 - 2022.10]</span>
+                        <span class="timeline-body">
+                            Research Engineer at <a href="https://arc.tencent.com/en/index">Tencent ARC Lab</a>.
+                        </span>
                         <!-- Worked closely with <a href="https://scholar.google.com/citations?user=4oXBp9UAAAAJ&hl=en">Dr. Ying Shan</a>, <a href="https://scholar.google.com/citations?user=gP-UxcoAAAAJ&hl=en">Dr. Weihao Cheng</a> and <a href="https://scholar.google.com/citations?user=zJvrrusAAAAJ&hl=en">Dr. Zhongang Qi</a>. -->
                     </p>
-                    <p>
-                        [2020.06 - 2021.02]&nbsp
-                        Research Intern at <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/">Microsoft Research Asia</a>.
+                    <p class="timeline-entry">
+                        <span class="timeline-date">[2020.06 - 2021.02]</span>
+                        <span class="timeline-body">
+                            Research Intern at <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/">Microsoft Research Asia</a>.
+                        </span>
                         <!-- , supervised by <a href="https://www.microsoft.com/en-us/research/people/xipe/">Dr. Xiulian Peng</a>. -->
                     </p>
-                    <p>
-                        [2019.01 - 2020.06]&nbsp
-                        Research Intern at MEGVII Technology, supervised by <a href="https://scholar.google.com/citations?user=yuB-cfoAAAAJ&hl=en">Dr. Xiangyu Zhang</a>.
+                    <p class="timeline-entry">
+                        <span class="timeline-date">[2019.01 - 2020.06]</span>
+                        <span class="timeline-body">
+                            Research Intern at Megvii Technology, supervised by <a href="https://scholar.google.com/citations?user=yuB-cfoAAAAJ&hl=en">Dr. Xiangyu Zhang</a>.
+                        </span>
                     </p>
                     <!-- <p>
                         In recent years, I have served as a reviewer for TPAMI, NeurIPS, ICLR, CVPR and ACMMM.
                     </p> -->
-            </div>
-            <div class="box mb-3 is-shadowless">
-                <h2 class="title is-3 mb-2">Research</h2>
-                <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3" style="margin-top: 5px;">
+                </div>
+            </section>
+            <section class="section-card section-block" id="research">
+                <h2 class="section-title">Research</h2>
+                <article class="paper-row paper-item is-highlighted">
+                    <div class="paper-media paper-thumb">
+                        <figure class="image is-16by9"><img src="./images/2026_UniLS.jpg" alt="a paper"/></figure>
+                    </div>
+                    <div class="paper-main">
+                        <div class="paper-body">
+                            <p class="paper-title">
+                                <b>UniLS: End-to-End Audio-Driven Avatars for Unified Listening and Speaking</b>
+                            </p>
+                            <p class="paper-authors">
+                                <b>Xuangeng Chu</b>*, Ruicong Liu*, Yifei Huang, Yun Liu, Yichen Peng, Bo Zheng
+                            </p>
+                            <p class="paper-meta">
+                                <b>CVPR 2026</b>
+                            </p>
+                            <p class="paper-meta paper-links">
+                                <a href="https://arxiv.org/abs/2512.09327">Paper</a> / 
+                                <a href="https://arxiv.org/abs/2512.13674">Technical Report</a>
+                                <!-- <a href="https://shuhongll.github.io/I2_NeRF/">Project Website</a> / 
+                                <a href="https://github.com/ShuhongLL/I2-NeRF">Code</a>  -->
+                            </p>
+                            <p class="paper-desc">
+                                UniLS generates realistic, dual-track audio-driven expressions for both speakers and listeners; this work is part of the <a href="https://shandaai.github.io/project_mio_page/">MIO: Towards Interactive Intelligence for Digital Humans</a> project.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+                <article class="paper-row paper-item ">
+                    <div class="paper-media paper-thumb">
+                        <figure class="image is-16by9"><img src="./images/2026_DyaDiT.jpg" alt="a paper"/></figure>
+                    </div>
+                    <div class="paper-main">
+                        <div class="paper-body">
+                            <p class="paper-title">
+                                <b>DyaDiT: A Multi-Modal Diffusion Transformer for Socially-Aware Dyadic Gesture Generation</b>
+                            </p>
+                            <p class="paper-authors">
+                                Yichen Peng, Jyun-Ting Song, Siyeol Jung, Ruofan Liu, Haiyang Liu, <b>Xuangeng Chu</b>, Ruicong Liu, Erwin Wu, Hideki Koike, Kris Kitani
+                            </p>
+                            <p class="paper-meta">
+                                <b>CVPR 2026</b>
+                            </p>
+                            <!-- <p class="paper-meta paper-links">
+                                <a href="https://arxiv.org/abs/2510.22161">Paper</a> / 
+                                <a href="https://shuhongll.github.io/I2_NeRF/">Project Website</a> / 
+                                <a href="https://github.com/ShuhongLL/I2-NeRF">Code</a> 
+                            </p> -->
+                            <p class="paper-desc">
+                                DyaDiT generates digital human gestures by processing dyadic audio signals and social context, effectively capturing the mutual dynamics between two speakers.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+                <article class="paper-row paper-item ">
+                    <div class="paper-media paper-thumb">
                         <figure class="image is-16by9"><img src="./images/2025_I2NeRF.jpg" alt="a paper"/></figure>
                     </div>
-                    <div class="column is-9">
-                        <div class="box p-0 is-shadowless">
-                            <p style="font-size: 18px;">
+                    <div class="paper-main">
+                        <div class="paper-body">
+                            <p class="paper-title">
                                 <b>I2-NeRF: Learning Neural Radiance Fields Under Physically-Grounded Media Interactions</b>
                             </p>
-                            <p class="pb-2" style="font-size: 13px">
+                            <p class="paper-authors">
                                 Shuhong Liu, Lin Gu, Ziteng Cui, <b>Xuangeng Chu</b>, Tatsuya Harada
                             </p>
-                            </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta">
                                 <b>NeurIPS 2025</b>
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta paper-links">
                                 <a href="https://arxiv.org/abs/2510.22161">Paper</a> / 
-                                <a href="https://shuhongll.github.io/I2_NeRF/">Project Weibsite</a> / 
+                                <a href="https://shuhongll.github.io/I2_NeRF/">Project Website</a> / 
                                 <a href="https://github.com/ShuhongLL/I2-NeRF">Code</a> 
+                                <img class="stars-badge" src="https://img.shields.io/github/stars/ShuhongLL/I2-NeRF?style=social">
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-desc">
                                 I2-NeRF is a novel neural radiance field framework that enhances isometric and isotropic metric perception under media degradation.
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3" style="margin-top: 5px;">
+                </article>
+                <article class="paper-row paper-item ">
+                    <div class="paper-media paper-thumb">
                         <figure class="image is-16by9"><img src="./images/2025_Intend2Move.jpg" alt="a paper"/></figure>
                     </div>
-                    <div class="column is-9">
-                        <div class="box p-0 is-shadowless">
-                            <p style="font-size: 18px;">
+                    <div class="paper-main">
+                        <div class="paper-body">
+                            <p class="paper-title">
                                 <b>Intend to Move: A Dataset for Intention and Scene Aware Human Motion Prediction</b>
                             </p>
-                            <p class="pb-2" style="font-size: 13px">
+                            <p class="paper-authors">
                                 Ryo Umagami, Liu Yue, <b>Xuangeng Chu</b>, Ryuto Fukushima, Tetsuya Narita, Yusuke Mukuta, Tomoyuki Takahata, Jianfei Yang, Tatsuya Harada
                             </p>
-                            </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta">
                                 <b>NeurIPS Datasets & Benchmarks Track 2025</b>
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta paper-links">
                                 <a href="https://openreview.net/pdf?id=3CVU3RRvPx">Paper</a> / 
-                                <a href="https://ummaaa.github.io/intend-to-move/">Project Weibsite</a> / 
+                                <a href="https://ummaaa.github.io/intend-to-move/">Project Website</a> / 
                                 <a href="https://github.com/ummaaa/IntendToMove">Code&Data</a> 
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-desc">
                                 Intend to Move is a new dataset for embodied AI, focusing on intention-aware long-term human motion in real-world environments.
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3" style="margin-top: 5px;">
+                </article>
+                <article class="paper-row paper-item  is-highlighted">
+                    <div class="paper-media paper-thumb">
                         <figure class="image is-16by9"><img src="./images/2025_ARTalk.jpg" alt="a paper"/></figure>
                     </div>
-                    <div class="column is-9">
-                        <div class="box p-0 is-shadowless">
-                            <p style="font-size: 18px;">
+                    <div class="paper-main">
+                        <div class="paper-body">
+                            <p class="paper-title">
                                 <b>ARTalk: Speech-Driven 3D Head Animation via Autoregressive Model</b>
                             </p>
-                            <p class="pb-2" style="font-size: 13px">
+                            <p class="paper-authors">
                                 <b>Xuangeng Chu</b>, Nabarun Goswami, Ziteng Cui, Hanqin Wang, Tatsuya Harada
                             </p>
-                            </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta">
                                 <b>SIGGRAPH Asia 2025</b>
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta paper-links">
                                 <a href="https://arxiv.org/abs/2502.20323">Paper</a> / 
-                                <a href="https://xg-chu.site/project_artalk">Project Weibsite</a> / 
+                                <a href="https://xg-chu.site/project_artalk">Project Website</a> / 
                                 <a href="https://github.com/xg-chu/ARTalk">Code</a> 
-                                <img style="vertical-align: top" src="https://img.shields.io/github/stars/xg-chu/ARTalk?style=social">
+                                <img class="stars-badge" src="https://img.shields.io/github/stars/xg-chu/ARTalk?style=social">
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-desc">
                                 ARTalk generates realistic 3D head motions (lip sync, blinking, expressions, head poses) from audio in real-time.
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3" style="margin-top: 5px;">
+                </article>
+                <article class="paper-row paper-item ">
+                    <div class="paper-media paper-thumb">
                         <figure class="image is-16by9"><img src="./images/2025_LuminanceGS.jpg" alt="a paper"/></figure>
                     </div>
-                    <div class="column is-9">
-                        <div class="box p-0 is-shadowless">
-                            <p style="font-size: 18px;">
+                    <div class="paper-main">
+                        <div class="paper-body">
+                            <p class="paper-title">
                                 <b>Luminance-GS: Adapting 3D Gaussian Splatting to Challenging Lighting Conditions with View-Adaptive Curve Adjustment</b>
                             </p>
-                            <p class="pb-2" style="font-size: 13px">
+                            <p class="paper-authors">
                                 Ziteng Cui, <b>Xuangeng Chu</b>, Tatsuya Harada
                             </p>
-                            </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta">
                                 <b>CVPR 2025</b>
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta paper-links">
                                 <a href="https://arxiv.org/abs/2504.01503">Paper</a> / 
-                                <a href="https://cuiziteng.github.io/Luminance_GS_web">Project Weibsite</a> / 
+                                <a href="https://cuiziteng.github.io/Luminance_GS_web">Project Website</a> / 
                                 <a href="https://github.com/cuiziteng/Luminance-GS">Code</a> 
-                                <img style="vertical-align: top" src="https://img.shields.io/github/stars/cuiziteng/Luminance-GS?style=social">
+                                <img class="stars-badge" src="https://img.shields.io/github/stars/cuiziteng/Luminance-GS?style=social">
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-desc">
                                 A simple multi-view curve adjustment method for novel view synthesis under challenging lighting conditions, including low-light, overexposure, and varying exposure.
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3" style="margin-top: 5px;">
+                </article>
+                <article class="paper-row paper-item  is-highlighted">
+                    <div class="paper-media paper-thumb">
                         <figure class="image is-16by9"><img src="./images/2024_GAGA.jpg" alt="a paper"/></figure>
                     </div>
-                    <div class="column is-9">
-                        <div class="box p-0 is-shadowless">
-                            <p style="font-size: 18px;">
+                    <div class="paper-main">
+                        <div class="paper-body">
+                            <p class="paper-title">
                                 <b>Generalizable and Animatable Gaussian Head Avatar</b>
                             </p>
-                            <p class="pb-2" style="font-size: 13px">
+                            <p class="paper-authors">
                                 <b>Xuangeng Chu</b>, Tatsuya Harada
                             </p>
-                            </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta">
                                 <b>NeurIPS 2024</b>
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta paper-links">
                                 <a href="https://arxiv.org/abs/2410.07971">Paper</a> / 
-                                <a href="https://xg-chu.site/project_gagavatar">Project Weibsite</a> / 
+                                <a href="https://xg-chu.site/project_gagavatar">Project Website</a> / 
                                 <a href="https://github.com/xg-chu/GAGAvatar">Code</a> 
-                                <img style="vertical-align: top" src="https://img.shields.io/github/stars/xg-chu/GAGAvatar?style=social"> / 
+                                <img class="stars-badge" src="https://img.shields.io/github/stars/xg-chu/GAGAvatar?style=social"> / 
                                 <a href="https://github.com/xg-chu/GAGAvatar_track">Data</a>
-                                <img style="vertical-align: top" src="https://img.shields.io/github/stars/xg-chu/GAGAvatar_track?style=social">
+                                <img class="stars-badge" src="https://img.shields.io/github/stars/xg-chu/GAGAvatar_track?style=social">
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-desc">
                                 The first generalizable 3DGS framework for head avatars that can reconstruct realistic avatars from a single image and achieve real-time reenactment.
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3" style="margin-top: 5px;">
-                        <figure class="image is-16by9"><img src="./images/2024_GPAvatar.gif" alt="a paper"/></figure>
+                </article>
+                <article class="paper-row paper-item is-highlighted">
+                    <div class="paper-media paper-thumb">
+                        <figure class="image is-16by9"><img src="./images/2024_GPAvatar.jpg" alt="a paper"/></figure>
                     </div>
-                    <div class="column is-9">
-                        <div class="box p-0 is-shadowless">
-                            <p style="font-size: 18px;">
+                    <div class="paper-main">
+                        <div class="paper-body">
+                            <p class="paper-title">
                                 <b>GPAvatar: Generalizable and Precise Head Avatar from Image(s)</b>
                             </p>
-                            <p class="pb-2" style="font-size: 13px">
+                            <p class="paper-authors">
                                 <b>Xuangeng Chu</b>, Yu Li, Ailing Zeng, Tianyu Yang, Lijian Lin, Yunfei Liu, Tatsuya Harada
                             </p>
-                            </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta">
                                 <b>ICLR 2024</b>
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta paper-links">
                                 <a href="https://arxiv.org/abs/2401.10215">Paper</a> / 
-                                <a href="https://xg-chu.site/project_gpavatar">Project Weibsite</a> / 
+                                <a href="https://xg-chu.site/project_gpavatar">Project Website</a> / 
                                 <a href="https://github.com/xg-chu/GPAvatar">Code</a> 
-                                <img style="vertical-align: top" src="https://img.shields.io/github/stars/xg-chu/GPAvatar?style=social"> / 
+                                <img class="stars-badge" src="https://img.shields.io/github/stars/xg-chu/GPAvatar?style=social"> / 
                                 <a href="https://github.com/xg-chu/lightning_track">Data</a>
-                                <img style="vertical-align: top" src="https://img.shields.io/github/stars/xg-chu/lightning_track?style=social">
+                                <img class="stars-badge" src="https://img.shields.io/github/stars/xg-chu/lightning_track?style=social">
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-desc">
                                 A framework to reconstructs 3D head avatars from one or several images in a single forward pass.
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3" style="margin-top: 5px;">
+                </article>
+                <article class="paper-row paper-item ">
+                    <div class="paper-media paper-thumb">
                         <figure class="image is-16by9"><img src="./images/2024_NovelView.jpg" alt="a paper"/></figure>
                     </div>
-                    <div class="column is-9">
-                        <div class="box p-0 is-shadowless">
-                            <p style="font-size: 16px;">
+                    <div class="paper-main">
+                        <div class="paper-body">
+                            <p class="paper-title">
                                 <b>Real-time High-resolution View Synthesis of Complex Scenes with Explicit 3D Visibility Reasoning</b>
                             </p>
-                            <p class="pb-2" style="font-size: 13px">
+                            <p class="paper-authors">
                                 Tiansong Zhou, Yebin Liu, <b>Xuangeng Chu</b>, Chengkun Cao, Changyin Zhou, Fei Yu, Yu Li
                             </p>
-                            </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta">
                                 <b>TVCG 2024</b>
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta paper-links">
                                 <a href="https://ieeexplore.ieee.org/document/10753629">Paper</a>
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-desc">
                                 A real-time high-resolution novel view synthesis method from sparse view inputs.
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3" style="margin-top: 5px;">
+                </article>
+                <article class="paper-row paper-item ">
+                    <div class="paper-media paper-thumb">
                         <figure class="image is-16by9"><img src="./images/2023_TokenFace.jpg" alt="a paper"/></figure>
                     </div>
-                    <div class="column is-9">
-                        <div class="box p-0 is-shadowless">
-                            <p style="font-size: 18px;">
+                    <div class="paper-main">
+                        <div class="paper-body">
+                            <p class="paper-title">
                                 <b>Accurate 3D Face Reconstruction with Facial Component Tokens</b>
                             </p>
-                            <p class="pb-2" style="font-size: 13px">
+                            <p class="paper-authors">
                                 Tianke Zhang, <b>Xuangeng Chu</b>, Yunfei Liu, Lijian Lin, Zhendong Yang, Zhengzhuo Xu, Chengkun Cao, Fei Yu, Changyin Zhou, Chun Yuan, Yu Li
                             </p>
-                            </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta">
                                 <b>ICCV 2023</b>
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta paper-links">
                                 <a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Zhang_Accurate_3D_Face_Reconstruction_with_Facial_Component_Tokens_ICCV_2023_paper.pdf">Paper</a>
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-desc">
                                 A framework for 3D face reconstruction from monocular images based on transformers.
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="columns" style="padding-bottom: 18px;">
-                    <div class="column is-3" style="margin-top: 5px;">
+                </article>
+                <article class="paper-row paper-item ">
+                    <div class="paper-media paper-thumb">
                         <figure class="image is-16by9"><img src="./images/2020_CrowdDet.jpg" alt="a paper"/></figure>
                     </div>
-                    <div class="column is-9">
-                        <div class="box p-0 is-shadowless">
-                            <p style="font-size: 18px;">
+                    <div class="paper-main">
+                        <div class="paper-body">
+                            <p class="paper-title">
                                 <b>Detection in Crowded Scenes: One Proposal, Multiple Predictions</b>
                             </p>
-                            <p class="pb-2" style="font-size: 13px">
-                                <b>Xuangeng Chu*</b>, Anlin Zheng*, Xiangyu Zhang*, Jian Sun
+                            <p class="paper-authors">
+                                <b>Xuangeng Chu</b>*, Anlin Zheng*, Xiangyu Zhang*, Jian Sun
                             </p>
-                            </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta">
                                 <b>CVPR 2020 (Oral)</b>
                             </p>
-                            <p style="font-size: 14px">
+                            <p class="paper-meta paper-links">
                                 <a href="https://arxiv.org/abs/2003.09163">Paper</a> / 
                                 <a href="https://github.com/xg-chu/CrowdDet">Code</a>
-                                <img style="vertical-align: top" src="https://img.shields.io/github/stars/xg-chu/CrowdDet?style=social">
+                                <img class="stars-badge" src="https://img.shields.io/github/stars/xg-chu/CrowdDet?style=social">
                             </p>
-                            <p style="font-size: 14px">
-                                A almost cost-free method to improve the detection performance in crowded scens.
+                            <p class="paper-desc">
+                                A nearly cost-free method to improve the detection performance in crowded scenes.
                             </p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </article>
+            </section>
+        </main>
     </div>
-    <footer class="footer pt-2 pb-5">
-        <div class="content has-text-centered">
-          <p style="font-size: 12px;">
-            Last updated: 2025-12-24. <i class="fa-regular fa-copyright"></i> 2025 Xuangeng Chu.
-            Powered by <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. 
+    <footer class="site-footer">
+        <div class="footer-inner">
+          <p class="footer-note">
+            Last updated: 2026-02-22. <i class="fa-regular fa-copyright"></i> 2026 Xuangeng Chu.
           </p>
         </div>
     </footer>
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+    </script>
 </body>
 </html>
