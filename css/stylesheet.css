@@ -172,6 +172,7 @@ a:hover {
 }
 
 .profile-map {
+    display: none;
     margin-top: 0.55rem;
 }
 
