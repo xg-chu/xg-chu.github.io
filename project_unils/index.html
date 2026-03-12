@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="UniLS: End-to-End Audio-Driven Avatars for Unified Listening and Speaking">
+    <meta name="keywords" content="UniLS, Audio-Driven Avatars, Speaking and Listening, 3D Face Animation, Conversational Avatar">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UniLS: End-to-End Audio-Driven Avatars for Unified Listening and Speaking</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/avatar.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero is-light">
+        <div class="hero-body">
+            <div class="container is-max-widescreen">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <div class="publication-logo mb-3">
+                            <img src="./static/images/logo.png" alt="UniLS Logo" style="max-height: 120px;">
+                        </div>
+                        <h1 class="title is-2 publication-title">
+                            UniLS: End-to-End Audio-Driven Avatars for Unified Listening and Speaking
+                        </h1>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://xg-chu.github.io">Xuangeng Chu</a><sup>1,2,*</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://ruicongliu.github.io">Ruicong Liu</a><sup>1,2,*,&dagger;</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://hyf015.github.io">Yifei Huang</a><sup>1,2</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=5mbpi0kAAAAJ&hl=zh-TW">Yun Liu</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://puckikk1202.github.io">Yichen Peng</a><sup>3</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="http://www.bozheng-lab.com">Bo Zheng</a><sup>1</sup>
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors mt-2">
+                            <span class="author-block"><sup>1</sup>Shanda AI Research Tokyo,</span>
+                            <span class="author-block"><sup>2</sup>The University of Tokyo,</span>
+                            <span class="author-block"><sup>3</sup>Institute of Science Tokyo</span>
+                        </div>
+
+                        <div class="is-size-6 publication-authors mt-2">
+                            <span class="author-block"><sup>*</sup>Equal contribution.</span>
+                            <span class="author-block ml-3"><sup>&dagger;</sup>Corresponding author.</span>
+                        </div>
+
+                        <div class="column has-text-centered mt-3">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/abs/2512.09327"
+                                        class="external-link button is-normal is-rounded btn-arxiv">
+                                        <span class="icon"><i class="ai ai-arxiv"></i></span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://github.com/xg-chu/UniLS"
+                                        class="external-link button is-normal is-rounded btn-github">
+                                        <span class="icon"><i class="fab fa-github"></i></span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://huggingface.co/xg-chu/UniLS"
+                                        class="external-link button is-normal is-rounded btn-model">
+                                        <span class="icon">&#129303;</span>
+                                        <span>Model</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://huggingface.co/datasets/xg-chu/UniLSTalkDataset"
+                                        class="external-link button is-normal is-rounded btn-data">
+                                        <span class="icon"><i class="far fa-images"></i></span>
+                                        <span>Data</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Abstract ===== -->
+    <section class="section" id="abstract" style="padding-top: 1.5rem;">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Generating lifelike conversational avatars requires modeling not just isolated speakers, but the dynamic, reciprocal interaction of speaking and listening. However, modeling the listener is exceptionally challenging: direct audio-driven training fails, producing stiff, static listening motions. This failure stems from a fundamental imbalance: the speaker's motion is strongly driven by speech audio, while the listener's motion primarily follows an internal motion prior and is only loosely guided by external speech. This challenge has led most methods to focus on speak-only generation. The only prior attempt at joint generation relies on extra speaker's motion to produce the listener. This design is not end-to-end, thereby hindering the real-time applicability. To address this limitation, we present UniLS, the first end-to-end framework for generating unified speak-listen expressions, driven by only dual-track audio. Our method introduces a novel two-stage training paradigm. Stage 1 first learns the internal motion prior by training an audio-free autoregressive generator, capturing the spontaneous dynamics of natural facial motion. Stage 2 then introduces the dual-track audio, fine-tuning the generator to modulate the learned motion prior based on external speech cues. Extensive evaluations show UniLS achieves state-of-the-art speaking accuracy. More importantly, it delivers up to 44.1% improvement in listening metrics, generating significantly more diverse and natural listening expressions. This effectively mitigates the stiffness problem and provides a practical, high-fidelity audio-driven solution for interactive digital humans.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Dataset ===== -->
+    <section class="section" id="dataset">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <h2 class="title is-3 has-text-centered">UniLS-Talk Dataset</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            To enable research on unified speaking and listening avatar generation, we curate and construct the <strong>UniLS-Talk Dataset</strong>, a large-scale collection of high-quality 3D facial motion data. We apply a carefully designed tracking pipeline to extract per-frame <a href="https://flame.is.tue.mpg.de/">FLAME</a> parameters, including expression coefficients, eye-gaze, jaw pose and head pose annotations. The dataset comprises two complementary parts:
+                        </p>
+                        <ul>
+                            <li><strong>Paired conversational data</strong> sourced from the <a href="https://ai.meta.com/research/seamless-interaction/">Seamless Interaction</a> dataset, providing synchronized dual-speaker videos with natural turn-taking dynamics between speaking and listening.</li>
+                            <li><strong>Unpaired multi-scenario data</strong> aggregated from CelebV, TalkingHead-1KH, TEDTalk, VFHQ, and other in-the-wild videos, covering diverse facial behaviors across identities and environments (news broadcasts, interviews, casual talking, etc.).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Statistics Table -->
+                    <div class="table-container">
+                        <table class="table is-bordered is-striped is-hoverable is-fullwidth dataset-table">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Source</th>
+                                    <th>Hours</th>
+                                    <th>Audio</th>
+                                    <th>Motion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="1"><strong>Paired Conversational</strong></td>
+                                    <td>Seamless Interaction Dataset</td>
+                                    <td>657.5 h</td>
+                                    <td>✅</td>
+                                    <td>✅</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Unpaired Multi-Scenario</strong></td>
+                                    <td>Diverse identities and environments from in-the-wild videos</td>
+                                    <td><strong>546.5 h</strong></td>
+                                    <td>✅</td>
+                                    <td>❌</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2"><strong>Total</strong></td>
+                                    <td><strong>1,204 h</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <!-- Train/Val/Test Split -->
+                    <div class="content has-text-justified mt-4">
+                        <p>
+                            The paired conversational data is split into <strong>622.5 hours</strong> for training, <strong>4.8 hours</strong> for validation, and <strong>30.2 hours</strong> for testing. All data includes FLAME expression parameters, jaw and head pose, and eye-gaze annotations at 25 fps. The dataset is publicly available on <a href="https://huggingface.co/datasets/xg-chu/UniLSTalkDataset">HuggingFace</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Demo Gallery ===== -->
+    <section class="section demo-section" id="demos">
+        <div class="container is-max-desktop">
+
+            <h2 class="title is-3 has-text-centered mb-5">Demo Gallery</h2>
+
+            <!-- ===== Speak-Listen Interaction ===== -->
+            <h3 class="title is-4 mb-4">Unified Speaking &amp; Listening</h3>
+            <p class="content has-text-justified mb-4">
+                UniLS generates smooth, real-time transitions between speaking and
+                listening for two interlocutors driven solely by dual-track audio.
+                Each video shows a pair of avatars: notice the natural head movements,
+                blinks, and micro-expressions during both speaking and listening phases.
+            </p>
+
+            <div class="columns is-multiline">
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper">
+                                <video playsinline preload="none" data-src="./static/videos/unils_interaction/1.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper">
+                                <video playsinline preload="none" data-src="./static/videos/unils_interaction/2.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper">
+                                <video playsinline preload="none" data-src="./static/videos/unils_interaction/3.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper">
+                                <video playsinline preload="none" data-src="./static/videos/unils_interaction/4.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper">
+                                <video playsinline preload="none" data-src="./static/videos/unils_interaction/5.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper">
+                                <video playsinline preload="none" data-src="./static/videos/unils_interaction/6.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== Speaking & Listening ===== -->
+            <hr class="mt-6 mb-6">
+
+            <h3 class="title is-4 mb-4">Speaking &amp; Listening with GAGAvatar Rendering</h3>
+            <p class="content has-text-justified mb-4">
+                UniLS generates unified speaking and listening expressions, rendered
+                with <a href="https://xg-chu.site/project_gagavatar">GAGAvatar</a> for realistic avatar visualization.
+            </p>
+
+            <div class="columns is-multiline">
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper">
+                                <video playsinline preload="none" data-src="./static/videos/unils_interaction_gaga/1.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper">
+                                <video playsinline preload="none" data-src="./static/videos/unils_interaction_gaga/2.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper">
+                                <video playsinline preload="none" data-src="./static/videos/unils_interaction_gaga/3.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper">
+                                <video playsinline preload="none" data-src="./static/videos/unils_interaction_gaga/4.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper">
+                                <video playsinline preload="none" data-src="./static/videos/unils_interaction_gaga/5.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third-desktop is-half-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper">
+                                <video playsinline preload="none" data-src="./static/videos/unils_interaction_gaga/6.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Speaking Only -->
+            <h3 class="title is-4 mt-6 mb-4">Speaking Only</h3>
+            <p class="content has-text-justified mb-4">
+                Audio-driven speaking generation across different identities.
+            </p>
+
+            <div class="columns is-multiline">
+                <div class="column is-2-desktop is-one-third-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper video-wrapper-tall">
+                                <video playsinline preload="none" data-src="./static/videos/unils_speaking/1.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-2-desktop is-one-third-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper video-wrapper-tall">
+                                <video playsinline preload="none" data-src="./static/videos/unils_speaking/2.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-2-desktop is-one-third-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper video-wrapper-tall">
+                                <video playsinline preload="none" data-src="./static/videos/unils_speaking/3.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-2-desktop is-one-third-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper video-wrapper-tall">
+                                <video playsinline preload="none" data-src="./static/videos/unils_speaking/4.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-2-desktop is-one-third-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper video-wrapper-tall">
+                                <video playsinline preload="none" data-src="./static/videos/unils_speaking/5.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-2-desktop is-one-third-tablet">
+                    <div class="card video-card">
+                        <div class="card-image">
+                            <div class="video-wrapper video-wrapper-tall">
+                                <video playsinline preload="none" data-src="./static/videos/unils_speaking/6.mp4" class="lazy-video">
+                                </video>
+                                <div class="video-play-overlay">
+                                    <span class="play-btn"><i class="fas fa-play"></i></span>
+                                </div>
+                                <div class="video-placeholder">
+                                    <span class="icon is-large"><i class="fas fa-video fa-2x"></i></span>
+                                    <p>Coming Soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== BibTeX ===== -->
+    <section class="section" id="bibtex">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">BibTeX</h2>
+            <div class="bibtex-container">
+                <!-- <pre><code>@article{chu2025unils,
+    title   = {UniLS: End-to-End Audio-Driven Avatars for Unified Listening and Speaking},
+    author  = {Xuangeng Chu and Ruicong Liu and Yifei Huang and Yun Liu and Yichen Peng and Bo Zheng},
+    journal = {arXiv preprint arXiv:2512.09327},
+    year    = {2025}
+} -->
+<pre><code>@inproceedings{chu2025unils,
+    title     = {{UniLS}: End-to-End Audio-Driven Avatars for Unified Listening and Speaking},
+    author    = {Chu, Xuangeng and Liu, Ruicong and Huang, Yifei and Liu, Yun and Peng, Yichen and Zheng, Bo},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+    year      = {2026}
+}
+    <!-- pages     = {677--686}, -->
+</code></pre>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

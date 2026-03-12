@@ -1,0 +1,329 @@
+/* ===== Base & Typography ===== */
+body {
+    font-family: 'Inter', 'Noto Sans', sans-serif;
+}
+
+.publication-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.publication-authors {
+    font-family: 'Inter', sans-serif;
+}
+
+.publication-authors a {
+    color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+    display: inline-block;
+}
+
+/* ===== Content Width ===== */
+.container.is-max-desktop {
+    max-width: 960px !important;
+}
+
+.container.is-max-widescreen {
+    max-width: 1200px !important;
+}
+
+/* ===== Hero ===== */
+.hero.is-light {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+}
+
+.hero.is-light .hero-body {
+    padding-bottom: 2rem;
+}
+
+.link-block a {
+    margin: 5px 20px;
+    min-width: 110px;
+    box-shadow: 0 0 5px rgba(126, 138, 138, 0.3);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.link-block a:hover {
+    box-shadow: 0 2px 10px rgba(126, 138, 138, 0.5);
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+.btn-arxiv {
+    background-color: #c85454 !important;
+    border-color: #c85454 !important;
+    color: #fff !important;
+}
+
+.btn-github {
+    background-color: #5b5f67 !important;
+    border-color: #5b5f67 !important;
+    color: #fff !important;
+}
+
+.btn-model {
+    background-color: #ffb740 !important;
+    border-color: #ffb740 !important;
+    color: #fff !important;
+}
+
+.btn-data {
+    background-color: #78b0e0 !important;
+    border-color: #78b0e0 !important;
+    color: #fff !important;
+}
+
+/* ===== Dataset Table ===== */
+.dataset-table {
+    font-size: 0.92rem;
+}
+
+.dataset-table thead th {
+    background: #f0f4f8;
+    color: #363636;
+    font-weight: 600;
+    border-bottom: 2px solid #dbdbdb;
+}
+
+.dataset-table .dataset-subtotal td {
+    background: #f9fbfd;
+    font-style: italic;
+}
+
+.dataset-table tfoot td {
+    background: #f0f4f8;
+    font-weight: 600;
+    border-top: 2px solid #dbdbdb;
+}
+
+/* ===== Demo Section ===== */
+.demo-section {
+    background-color: #fafafa;
+}
+
+.demo-section hr {
+    background-color: #e0e0e0;
+    height: 1px;
+}
+
+/* ===== Video Cards ===== */
+.video-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.video-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-3px);
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #1a1a2e;
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #fff;
+}
+
+.video-wrapper-wide {
+    padding-bottom: 50%;
+}
+
+.video-wrapper-tall {
+    padding-bottom: 112.5%;
+}
+
+.video-wrapper-tall video {
+    object-fit: cover;
+}
+
+.video-card .card-content {
+    padding: 0.75rem 1rem;
+}
+
+/* ===== Video Play Overlay ===== */
+.video-play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.25);
+    transition: background 0.3s ease;
+}
+
+.video-play-overlay:hover {
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.video-play-overlay .play-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.video-play-overlay:hover .play-btn {
+    transform: scale(1.1);
+    background: #fff;
+}
+
+.video-play-overlay .play-btn i {
+    font-size: 22px;
+    color: #363636;
+    margin-left: 3px; /* optical center for play triangle */
+}
+
+.video-play-overlay.is-hidden {
+    display: none;
+}
+
+/* ===== Video Placeholder ===== */
+.video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+}
+
+.video-placeholder .icon {
+    margin-bottom: 0.5rem;
+}
+
+.video-placeholder p {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.video-wrapper.video-loaded .video-placeholder {
+    display: none;
+}
+
+/* ===== Video Controls ===== */
+.video-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+}
+
+.video-controls .button {
+    border: none;
+    background: #f0f0f0;
+    transition: background-color 0.2s ease;
+}
+
+.video-controls .button:hover {
+    background: #e0e0e0;
+}
+
+.video-progress {
+    flex-grow: 1;
+}
+
+.video-progress input[type="range"] {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #ddd;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.video-progress input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: hsl(204, 86%, 53%);
+    cursor: pointer;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.video-progress input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: hsl(204, 86%, 53%);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== BibTeX ===== */
+.bibtex-container pre {
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 1.25rem;
+    border: 1px solid #e0e0e0;
+    font-size: 0.85rem;
+    overflow-x: auto;
+}
+
+/* ===== Footer ===== */
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 768px) {
+    .demo-tabs a span:last-child {
+        font-size: 0.9rem;
+    }
+
+    .video-card:hover {
+        transform: none;
+    }
+
+    .video-controls {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .video-card .card-content {
+        padding: 0.5rem 0.75rem;
+    }
+}
