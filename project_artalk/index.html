@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="ARTalk: Speech-Driven 3D Head Animation via Autoregressive Model">
+    <meta name="keywords" content="ARTalk">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="google-site-verification" content="OEvbAqvdtgsyaHbiWcMG9BLSBuvECYMi_eJpVpjXOKo" /> -->
+    <title>ARTalk</title>
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/icon.png">
+
+    <script src="https://kit.fontawesome.com/d3f8a28656.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+    <div class="hero-body" style="padding-bottom: 0px;">
+        <div class="container is-max-widescreen is-centered">
+            <div class="columns is-mobile is-centered">
+                <img 
+                    class="logo"
+                    src="./static/images/artalk_logo_dynamic.gif"
+                    alt="The icon of ARTalk."
+                />
+            </div>
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-2 ">
+                        <span class="logo-background title is-1">ARTalk</span>: Speech-Driven 3D Head Animation via Autoregressive Model
+                    </h1>
+                    <h1 class="title is-4 publication-title">
+                        🤩SIGGRAPH Asia 2025🤩
+                    </h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            <a href="https://xg-chu.github.io">Xuangeng Chu</a><sup>1</sup>,</span>
+                        <span class="author-block">
+                            <a href="https://naba89.github.io">Nabarun Goswami</a><sup>1</sup>,</span>
+                        <span class="author-block">
+                            <a href="https://cuiziteng.github.io">Ziteng Cui</a><sup>1</sup>,</span>
+                        <span class="author-block">
+                            <a href="https://openreview.net/profile?id=~Hanqin_Wang1">Hanqin Wang</a><sup>1</sup>,</span>
+                        <span class="author-block">
+                            <a href="https://www.mi.t.u-tokyo.ac.jp/harada/">Tatsuya Harada</a><sup>1,2</sup>
+                        </span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>The University of Tokyo,</span>
+                        <span class="author-block"><sup>2</sup>RIKEN AIP</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="https://arxiv.org/abs/2502.20323"
+                                     class="external-link button is-normal is-rounded is-info is-light"
+                                >
+                                    <span class="icon">
+                                        <i class="ai ai-arxiv"></i>
+                                    </span>
+                                    <span>arXiv</span>
+                                </a>
+                            </span>
+                            <!-- <span class="link-block">
+                                <a href="https://www.youtube.com/watch?v=9244ZgOl4Xk"
+                                     class="external-link button is-normal is-rounded is-info is-light">
+                                    <span class="icon">
+                                            <i class="fab fa-youtube"></i>
+                                    </span>
+                                    <span>Video</span>
+                                </a>
+                            </span> -->
+                            <span class="link-block">
+                                <a href="https://github.com/xg-chu/ARTalk"
+                                    class="external-link button is-normal is-rounded is-info is-light"
+                                >
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>Code</span>
+                                </a>
+                            </span>
+                            <!-- <span class="link-block">
+                                <a href="https://github.com/xg-chu/GAGAvatar_track"
+                                     class="external-link button is-normal is-rounded is-info is-light">
+                                    <span class="icon">
+                                        <i class="far fa-images"></i>
+                                    </span>
+                                    <span>Data</span>
+                                </a>
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="margin-top: -20px;">
+<div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-justified">
+        <div class="column is-four-fifths"><p><b class="is-size-5">
+            ARTalk generates realistic 3D head motions in ⚡real time⚡ from given audio, including accurate lip sync, natural facial animations, eye blinks, and head poses.
+        </b></p></div>
+    </div>
+</div>
+<div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered", style="margin-top: 42px;">
+        <div class="column is-four-fifths">
+            <h2 class="title is-3 publication-title">Abstract</h2>
+            <div class="content has-text-justified">
+                <p>
+                    Speech-driven 3D facial animation aims to generate realistic lip movements and facial expressions for 3D head models from audio clips.
+                    Although existing diffusion-based methods are capable of producing natural motions, their slow generation speed limits their application potential.
+                    In this paper, we introduce a novel autoregressive model that achieves real-time generation of highly synchronized lip movements and realistic head poses and eye blinks by learning a mapping from speech to a multi-scale motion codebook. 
+                    Furthermore, our model can adapt to unseen speaking styles using sample motion sequences, enabling the creation of 3D talking avatars with unique personal styles beyond the identities seen during training.
+                    Extensive evaluations and user studies demonstrate that our method outperforms existing approaches in lip synchronization and perceived quality.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- <section class="section" style="margin-top: -20px;">
+    <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3 publication-title">Introduction Slides</h2>
+    </div>
+    <div class="container is-max-desktop">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="publication-pdf" style="margin-top: 20px;">
+                    <iframe src="./static/images/ARTalk.pdf" style="width: 100%; height: 500px;" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<section class="section">
+    <div class="columns is-centered has-text-centered">
+    <h2 class="title is-3 publication-title">
+    Driving Mesh with
+    <img 
+        class="artalk-results"
+        src="./static/images/artalk_logo.png"
+        alt="The icon of ARTalk."
+    /></h2>
+    </div>
+    <div class="content has-text-justified"></div>
+    <div class="container is-max-desktop has-text-centered">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/1.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/2.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/3.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/4.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/5.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container is-max-desktop has-text-centered">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/6.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/7.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/8.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/9.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/10.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container is-max-desktop has-text-centered">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/11.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/12.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/13.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/14.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/dataset15/15.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="columns is-centered has-text-centered" style="margin-bottom: -10px;">
+    <h2 class="title is-3 publication-title">
+        Driving with In-the-wild Audio
+    </h2>
+    </div>
+    <div class="content has-text-justified"></div>
+    <div class="container is-max-desktop has-text-centered">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/wild5/1.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/wild5/2.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/wild5/3.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/wild5/4.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/images/thumbnail.jpg" preload="none" >
+                        <source src="./static/videos/wild5/5.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="columns is-centered has-text-centered" style="margin-bottom: -10px;">
+    <h2 class="title is-3 publication-title">
+        Driving 
+        <a href="https://xg-chu.site/project_gagavatar/">
+            <img class="gagavatar-results" src="./static/images/gagavatar_logo.png" alt="The icon of GAGAvatar." />
+        </a> 
+        with
+        <img class="artalk-results" src="./static/images/artalk_logo.png" alt="The icon of ARTalk."/>
+    </h2>
+    </div>
+    <div class="content has-text-justified"></div>
+    <div class="container is-max-desktop has-text-centered">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/videos/render5/1.jpg" preload="none" >
+                        <source src="./static/videos/render5/1.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/videos/render5/2.jpg" preload="none" >
+                        <source src="./static/videos/render5/2.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/videos/render5/3.jpg" preload="none" >
+                        <source src="./static/videos/render5/3.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/videos/render5/4.jpg" preload="none" >
+                        <source src="./static/videos/render5/4.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="column interpolation-video-column" style="padding: 0px">
+                    <video height="100%" controls poster="./static/videos/render5/5.jpg" preload="none" >
+                        <source src="./static/videos/render5/5.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3" style="text-align: center">BibTeX</h2>
+                <pre><code>@misc{
+    chu2025artalk,
+    title={ARTalk: Speech-Driven 3D Head Animation via Autoregressive Model}, 
+    author={Xuangeng Chu and Nabarun Goswami and Ziteng Cui and Hanqin Wang and Tatsuya Harada},
+    year={2025},
+    eprint={2502.20323},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV},
+    url={https://arxiv.org/abs/2502.20323}, 
+}
+</code></pre>
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-full-width is-centered" style="margin:0; padding: 0;"><p>
+            This website is based on the <a href="https://nerfies.github.io">Nerfies</a>, and the "ARTalk" logo is designed by Caihong Ning.
+        </p></div>
+        <div class="cell mb-0 is-hidden-mobile is-hidden-desktop" style="margin:0; padding: 0;">
+            <div class="box is-shadowless">
+                <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=wZtdDuhRvTFcUBNGn3wEhvkHUASjvyJr4XBBfbRyl8s"></script>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
