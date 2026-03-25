@@ -302,6 +302,41 @@ a:hover {
     background: transparent;
 }
 
+.work-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.work-container .work-scroll {
+    flex: 1;
+    min-width: 0;
+}
+
+.work-logos {
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem 1.25rem;
+    max-width: 230px;
+    opacity: 0.5;
+    transition: opacity 200ms ease;
+}
+
+.work-logos:hover {
+    opacity: 0.8;
+}
+
+.work-logos img {
+    max-height: 28px;
+    max-width: 46px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
 
 .paper-row {
     padding-top: 1rem;
@@ -439,5 +474,15 @@ a:hover {
     .paper-media {
         width: 100%;
         min-width: 0;
+    }
+
+    .work-logos {
+        max-width: 120px;
+        gap: 0.3rem 0.6rem;
+    }
+
+    .work-logos img {
+        max-height: 18px;
+        max-width: 32px;
     }
 }
